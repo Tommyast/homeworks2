@@ -1,4 +1,15 @@
 class House:
+
+    houses_history = []
+
+    def __new__(cls, *args, **kwargs):
+        instance = super(House, cls).__new__(cls)
+        cls.houses_history.append(args[0])
+        return instance
+
+    def __del__(self):
+        print(f"{self.name} снесён, но он останется в истории")
+
     def __init__(self, name, number_of_floors):
         self.name = name
         self.number_of_floors = number_of_floors
@@ -60,29 +71,15 @@ class House:
 
 
 h1 = House('ЖК Эльбрус', 10)
+print(House.houses_history)
 h2 = House('ЖК Акация', 20)
+print(House.houses_history)
+h3 = House('ЖК Матрёшки', 20)
+print(House.houses_history)
 
-print(h1)
-print(h2)
+# Удаление объектов
+del h2
+del h3
 
-print(h1 == h2)  # False
-
-h1 = h1 + 10
-print(h1)  # Название: ЖК Эльбрус, кол-во этажей: 20
-print(h1 == h2)  # True
-
-h1 += 10
-print(h1)  # Название: ЖК Эльбрус, кол-во этажей: 30
-
-h2 = 10 + h2
-print(h2)  # Название: ЖК Акация, кол-во этажей: 30
-
-print(h1 > h2)  # False
-print(h1 >= h2)  # True
-print(h1 < h2)  # False
-print(h1 <= h2)  # True
-print(h1 != h2)  # False
-
-
-
+print(House.houses_history)
 
