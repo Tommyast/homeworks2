@@ -1,5 +1,6 @@
 import time
 
+
 class User:
     def __init__(self, nickname, password, age):
         self.nickname = nickname
@@ -80,6 +81,7 @@ class UrTube:
 
     def __repr__(self):
         return "UrTube(users={}, videos={}, current_user={})".format(self.users, self.videos, self.current_user)
+
 
 ur = UrTube()
 v1 = Video('Лучший язык программирования 2024 года', 200)
